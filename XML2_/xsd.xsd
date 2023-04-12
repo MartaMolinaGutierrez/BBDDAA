@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="partidos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="partido" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="idPartido" type="xs:string" use="required"/>
+            <xs:attribute name="temporada" type="xs:string" use="required"/>
+            <xs:attribute name="division" type="xs:string" use="required"/>
+            <xs:attribute name="jornada" type="xs:string" use="required"/>
+            <xs:attribute name="EquipoLocal" type="xs:string" use="required"/>
+            <xs:attribute name="EquipoVisitante" type="xs:string" use="required"/>
+            <xs:attribute name="golesLocal" type="xs:string" use="required"/>
+            <xs:attribute name="golesVisitante" type="xs:string" use="required"/>
+            <xs:attribute name="fecha" type="xs:string" use="required"/>
+            <xs:attribute name="timestamp" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
