@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ystfeed">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vespaadd" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="document" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="uri" maxOccurs="unbounded" type="xs:int"/>
+										<xs:element name="subject" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="content" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="bestanswer" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="nbestanswers" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="answer_item" maxOccurs="unbounded" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="cat" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="maincat" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="subcat" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="date" maxOccurs="unbounded" type="xs:int"/>
+										<xs:element name="res_date" maxOccurs="unbounded" type="xs:int"/>
+										<xs:element name="lastanswerts" maxOccurs="unbounded" type="xs:int"/>
+										<xs:element name="qlang" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="qintl" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="language" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="id" maxOccurs="unbounded" type="xs:string"/>
+										<xs:element name="best_id" maxOccurs="unbounded" type="xs:string"/>
+									</xs:sequence>
+									<xs:attribute name="type" use="required" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

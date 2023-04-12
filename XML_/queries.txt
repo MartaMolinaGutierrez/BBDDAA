@@ -1,0 +1,43 @@
+#####################################################
+#### ESTAS SON LAS XQUERIES QUE SE HAN UTILIZADO ####
+####         Se han ejecutado en XBase           ####
+#####################################################
+
+// numero de categorías diferentes
+let $doc := doc("C:/Users/03957712/OneDrive - Universidad de Castilla-La Mancha/Cosas del PC/Escritorio/Datawarehouse/XML/shorten.xml")
+return count(distinct-values($doc//document[maincat='Health']/subcat))
+
+// categorías diferentes
+let $doc := doc("C:/Users/03957712/OneDrive - Universidad de Castilla-La Mancha/Cosas del PC/Escritorio/Datawarehouse/XML/shorten.xml")
+return distinct-values($doc//document[maincat='Health']/subcat)
+
+// el lenguaje más usado
+let $doc := doc("C:/Users/03957712/OneDrive - Universidad de Castilla-La Mancha/Cosas del PC/Escritorio/Datawarehouse/XML/shorten.xml")
+let $language-counts := $doc//ystfeed/vespaadd/document/language
+let $distinct-languages := distinct-values($language-counts)
+let $language-frequencies := 
+    for $language in $distinct-languages
+    return
+        element { $language } { count($language-counts[. = $language]) }
+let $max-frequency := max($language-frequencies)
+return
+    $language-frequencies[. = $max-frequency]
+
+// usuarios con mejores respuestas
+let $best_ids := distinct-values(//best_id)
+for $best_id in $best_ids
+let $freq := count(//best_id[. = $best_id])
+order by $freq descending
+return element { 'result' } {
+  element { 'user_id' } { $best_id },
+  element { 'frequency' } { $freq }
+}[1]
+
+let $ids := distinct-values(//id)
+for $id in $ids
+let $freq := count(//id[. = $id])
+order by $freq descending
+return element { 'result' } {
+  element { 'user_id' } { $id },
+  element { 'frequency' } { $freq }
+}[1]
